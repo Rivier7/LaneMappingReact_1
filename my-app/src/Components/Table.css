@@ -1,0 +1,69 @@
+/* Table.css */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 12px;
+  text-align: left;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd; /* Add borders to separate columns */
+  padding: 8px; /* Add padding for better spacing */
+}
+
+
+th{
+  background-color: #4c84af; /* A pleasant green color */
+}
+
+button {
+  background-color: #4c84af; /* Match the table header color */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a085; /* Slightly darker green for hover effect */
+}
+
+button:active {
+  transform: translateY(2px); /* Simulate button press by moving it down */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Adjust shadow for pressed effect */
+}
+
+select {
+  background-color: #f9f9f9; /* Light gray background */
+  border: 1px solid #ddd; /* Match the table cell border */
+  padding: 8px; /* Add padding for better spacing */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 14px; /* Match button font size */
+  font-family: Arial, Helvetica, sans-serif; /* Match table font */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus {
+  border-color: #4caf96; /* Highlight border on focus */
+  box-shadow: 0 0 5px rgba(76, 175, 150, 0.5); /* Add subtle glow */
+  outline: none; /* Remove default outline */
+}
+.small-input {
+  width: 50%; /* Adjust width as needed */
+  padding: 5px; /* Reduce padding for a smaller appearance */
+  font-size: 12px; /* Adjust font size for better fit */
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+.search-form{
+  margin-top: 125px;
+}
