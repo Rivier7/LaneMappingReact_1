@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
+import { updateLane } from './api';
 
 import './Table.css';
 
 function Table({ lanes }) {
-
   const navigate = useNavigate(); // ✅ useNavigate inside the component
-
 
   const [searchForm, setSearchForm] = useState({
     accountName: '',
@@ -57,7 +56,10 @@ function Table({ lanes }) {
     };
 
     return filteredLanes.map((lane, index) => (
-      <tr key={index}>
+      <tr
+        key={index}
+        className={lane.hasBeenUpdated ? 'highlight-yellow' : ''} // Apply highlight if updated
+      >
         <td>{lane.accountName}</td>
         <td>{lane.sheet}</td>
         <td>{lane.originCity}</td>
@@ -79,14 +81,11 @@ function Table({ lanes }) {
         <td>{lane.lastUpdate ? new Date(lane.lastUpdate).toLocaleDateString() : "N/A"}</td>
         <td>{lane.additionalNotes}</td>
         <td>
-        <button onClick={() => editLane(lane)}>edit</button>
+          <button onClick={() => editLane(lane)}>edit</button>
         </td>
-        </tr>
+      </tr>
     ));
   };
-
-
-
 
   return (
     <div className="table-container">
@@ -190,44 +189,38 @@ function Table({ lanes }) {
                     <option key={city} value={city}>{city}</option>
                   ))}
                 </select>
-
               </td>
 
-
-
-              
-              {/* destinationCountry */}
+              {/* Destination Country */}
               <td>
                 <select
                   name="destinationCountry"
                   value={searchForm.destinationCountry}
                   onChange={handleSearchChange}
                 >
-                  <option value="">Select city...</option>
+                  <option value="">Select country...</option>
                   {[...new Set(lanes.map((r) => r.destinationCountry))].map((destinationCountry) => (
                     <option key={destinationCountry} value={destinationCountry}>{destinationCountry}</option>
                   ))}
                 </select>
-
               </td>
 
-                 {/* Destination State */}
-                 <td>
+              {/* Destination State */}
+              <td>
                 <select
                   name="destinationState"
                   value={searchForm.destinationState}
                   onChange={handleSearchChange}
                 >
-                  <option value="">Select city...</option>
+                  <option value="">Select state...</option>
                   {[...new Set(lanes.map((r) => r.destinationState))].map((destinationState) => (
                     <option key={destinationState} value={destinationState}>{destinationState}</option>
                   ))}
                 </select>
-
               </td>
 
-                 {/* Destination State */}
-                 <td>
+              {/* Destination City */}
+              <td>
                 <select
                   name="destinationCity"
                   value={searchForm.destinationCity}
@@ -238,16 +231,7 @@ function Table({ lanes }) {
                     <option key={destinationCity} value={destinationCity}>{destinationCity}</option>
                   ))}
                 </select>
-
               </td>
-              
-                
-
-
-
-
-
-              
             </tr>
           </tbody>
         </table>
@@ -259,16 +243,11 @@ function Table({ lanes }) {
           <tr>
             <th>Account Name</th>
             <th>Sheet</th>
-            <th>Origin 
-              City</th>
-            <th>Origin 
-              State</th>
-            <th>Origin 
-              Country</th>
-            <th>Destination 
-              City</th>
-            <th>Destination 
-              State</th>
+            <th>Origin City</th>
+            <th>Origin State</th>
+            <th>Origin Country</th>
+            <th>Destination City</th>
+            <th>Destination State</th>
             <th>Destination Country</th>
             <th>Item Number</th>
             <th>Options</th>
@@ -278,11 +257,8 @@ function Table({ lanes }) {
             <th>Transit Station Airport</th>
             <th>Flight Operating Days Transit</th>
             <th>Transit Flight Number</th>
-            <th>Destination
-              Airport</th>
-            <th>has
-              Been
-              Updated</th>
+            <th>Destination Airport</th>
+            <th>Has Been Updated</th>
             <th>Last Update</th>
             <th>Additional Notes</th>
             <th></th>

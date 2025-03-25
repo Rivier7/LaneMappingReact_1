@@ -7,7 +7,9 @@ const Header = () => {
     <header style={styles.header}>
       <h1 style={styles.title}>Lane Mapping app</h1>
       <nav style={styles.nav}>
-        <a href="/" style={styles.link}>Home</a>
+        <a href="/Home" style={styles.link}>Home</a>
+        <a href="/Account" style={styles.link}>Account</a>
+
       </nav>
     </header>
     </div>

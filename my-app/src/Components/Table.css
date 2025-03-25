@@ -16,6 +16,9 @@ th, td {
   border: 1px solid #ddd; /* Add borders to separate columns */
   padding: 8px; /* Add padding for better spacing */
 }
+.highlight-yellow {
+  background-color: rgb(255, 255, 152);
+}
 
 
 th{
