@@ -34,12 +34,11 @@ const Edit = () => {
     console.log('Updated Lane:', updatedLane);
     console.log('Lane ID:', updatedLane.id);
 
-
-
     try {
       await updateLane(updatedLane.id, updatedLane);
+
       alert('Lane updated successfully!');
-      navigate('/');
+      navigate('/Home');
     } catch (error) {
       console.error('Error updating lane:', error.message);
       alert('Failed to update lane.');
@@ -84,7 +83,7 @@ const Edit = () => {
 
         {/* Submit and Cancel Buttons */}
         <button type="button" onClick={handleSubmit}>Save Changes</button>
-        <button type="button" className='cancel-button' onClick={() => navigate('/')}>Cancel</button>
+        <button type="button" className='cancel-button' onClick={() => navigate('/Home')}>Cancel</button>
       </form>
     </div>
   );
